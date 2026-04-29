@@ -4,14 +4,16 @@ End-to-end validation framework for embedded device OTA updates.
 Simulates the complete firmware delivery pipeline with security
 validation and automatic rollback on boot failure.
 
-## Pipeline
-Package creation → Download validation → Signature verification
-↓                   ↓                      ↓
-RSA-2048 signing   SHA256 checksum        RSA-PSS verify
-↓
-A/B partition flash → Boot validation → Commit or rollback
-↓                   ↓                   ↓
-Inactive slot       5 system checks    Auto-recovery
+## Pipeline stages
+
+| Stage | What happens |
+|---|---|
+| 1. Package creation | Firmware built, signed with RSA-2048, SHA256 checksum generated |
+| 2. Download validation | Checksum verified — corruption and incomplete downloads rejected |
+| 3. Signature verification | RSA-PSS signature validated — tampered packages rejected |
+| 4. A/B partition flash | New firmware written to inactive slot — active slot untouched |
+| 5. Boot validation | 5 system checks run — CAN, camera, network, processes |
+| 6. Commit or rollback | Success commits update, failure triggers automatic rollback |
 
 ## Test results
 
@@ -30,7 +32,7 @@ Inactive slot       5 system checks    Auto-recovery
 - Tamper detection testing
 - Wrong-key rejection testing
 
-## A/B Partition
+## A/B partition
 
 Device always runs from one slot while the other receives
 the update. Bad update triggers automatic rollback to last
