@@ -18,9 +18,9 @@ Inactive slot       5 system checks    Auto-recovery
 | Scenario | Result | Rollback |
 |---|---|---|
 | Normal update v1.0.0 | PASS | no |
-| Bad firmware v2.0.0 | PASS | YES — recovered to v1.0.0 |
-| Corrupted download | PASS | no — rejected at checksum |
-| Tampered package | PASS | no — rejected at signature |
+| Bad firmware v2.0.0 | PASS | YES - recovered to v1.0.0 |
+| Corrupted download | PASS | no - rejected at checksum |
+| Tampered package | PASS | no - rejected at signature |
 
 ## Security
 
