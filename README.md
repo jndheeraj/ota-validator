@@ -9,10 +9,10 @@ validation and automatic rollback on boot failure.
 | Stage | What happens |
 |---|---|
 | 1. Package creation | Firmware built, signed with RSA-2048, SHA256 checksum generated |
-| 2. Download validation | Checksum verified — corruption and incomplete downloads rejected |
-| 3. Signature verification | RSA-PSS signature validated — tampered packages rejected |
-| 4. A/B partition flash | New firmware written to inactive slot — active slot untouched |
-| 5. Boot validation | 5 system checks run — CAN, camera, network, processes |
+| 2. Download validation | Checksum verified - corruption and incomplete downloads rejected |
+| 3. Signature verification | RSA-PSS signature validated - tampered packages rejected |
+| 4. A/B partition flash | New firmware written to inactive slot - active slot untouched |
+| 5. Boot validation | 5 system checks run - CAN, camera, network, processes |
 | 6. Commit or rollback | Success commits update, failure triggers automatic rollback |
 
 ## Test results
